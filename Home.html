@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Here is the application form for the August intake 2025.</p>
+    <form action="">
+        <label for="FullName">Full Name:</label>
+        <input type="text" id="FullName" placeholder="type your name here" required><br>
+       
+        <label for="dob">Date of birth:</label>
+        <input type="Date" id="Date" required><br>
+        
+        <label for="Gender">Gender:</label>
+        <select id="gender" name="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        </select><br>
+
+        <label for="Email">Email:</label>
+        <input type="Email" name="Email" id="Email" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="phone" required><br>
+
+        <label for="Education">Level of Education</label>
+        <input type="text" name="Education" id="Education" required><br>
+
+        <label for="Experience">Experience in ict filed.</label>
+        <textarea name="experience" id="experience" rows="1" required></textarea><br>
+
+         <label for="document">Upload Academic Certificate (PDF only):</label>
+         <input type="file" id="document" name="document" accept=".pdf" required><br>
+
+         <button type="reset">Reset</button>
+         <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>

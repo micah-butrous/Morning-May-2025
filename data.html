@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Analysis Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    table, th, td { border: 1px solid gray; border-collapse: collapse; padding: 5px; }
+    .container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .summary { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>📈 Data Analysis Dashboard</h1>
+  <input type="file" id="csvFile" accept=".csv"><br><br>
+
+  <div class="container">
+    <div>
+      <h3>Data Table</h3>
+      <table id="dataTable"></table>
+    </div>
+
+    <div>
+      <h3>Chart</h3>
+      <canvas id="chartCanvas" width="400" height="300"></canvas>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h3>Summary Statistics</h3>
+    <pre id="summaryStats"></pre>
+  </div>
+
+  <script>
+    document.getElementById('csvFile').addEventListener('change', function() {
+      const file = this.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch('/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        displayTable(data.columns, data.rows);
+        displayChart(data.columns, data.rows);
+        displaySummary(data.summary);
+      });
+    });
+
+    function displayTable(columns, rows) {
+      const table = document.getElementById('dataTable');
+      table.innerHTML = '';
+      const header = table.insertRow();
+      columns.forEach(col => {
+        const th = document.createElement('th');
+        th.textContent = col;
+        header.appendChild(th);
+      });
+      rows.forEach(row => {
+        const tr = table.insertRow();
+        columns.forEach(col => {
+          const td = tr.insertCell();
+          td.textContent = row[col];
+        });
+      });
+    }
+
+    function displayChart(columns, rows) {
+      const ctx = document.getElementById('chartCanvas').getContext('2d');
+      const labels = rows.map(row => row[columns[0]]);
+      const data = rows.map(row => parseFloat(row[columns[1]]) || 0);
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: columns[1],
+            data,
+            backgroundColor: 'rgba(75,192,192,0.6)'
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    function displaySummary(summary) {
+      const pre = document.getElementById('summaryStats');
+      let output = '';
+      for (const col in summary) {
+        const s = summary[col];
+        output += `Column: ${col}\n Count: ${s.count}\n Mean: ${s.mean}\n Min: ${s.min}\n Max: ${s.max}\n\n`;
+      }
+      pre.textContent = output;
+    }
+  </script>
+</body>
+</html>

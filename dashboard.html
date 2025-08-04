@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Portfolio</title>
+  <style>
+    /* Page Styling */
+    body {
+      background-color: #eef2f7; /* light background */
+      font-family: Arial, Helvetica, sans-serif; /* sans-serif font */
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Bar Styling */
+    nav {
+      background-color: #004080;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 18px;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Image Styling */
+    img {
+      width: 300px;
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+
+    /* Unordered List Styling */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 auto 30px auto;
+      max-width: 300px;
+      text-align: left;
+    }
+
+    ul li {
+      font-size: 18px;
+      padding: 6px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Form Styling */
+    form {
+      max-width: 400px;
+      margin: 0 auto 40px auto;
+      text-align: left;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input[type="text"],
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    form input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #004080;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #00264d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Content Section -->
+  <section>
+    <h2>My Portfolio</h2>
+    <p>Hello! I am a web developer passionate about creating clean and user-friendly websites.</p>
+    <p>I enjoy learning new technologies and improving my coding skills every day.</p>
+  </section>
+
+  <!-- Image and Skills -->
+  <section>
+    <img src="https://via.placeholder.com/300" alt="Profile Picture" />
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
+
+  <!-- Form Design -->
+  <section>
+    <form action="#">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your first name" />
+
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name" />
+
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+        <option value="sudan">Sudan</option>
+        <option value="egypt">Egypt</option>
+      </select>
+
+      <input type="submit" value="Submit" />
+    </form>
+  </section>
+
+</body>
+</html>
